@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2024/11/23 11:39:30
-// Design Name: 
-// Module Name: ALU_sim
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
  module ALU_sim();
     //input
@@ -225,7 +205,7 @@
         ALUop = 3'b100;
         ALUSrcA = 1;
         ALUSrcB = 1;
-        //�������űȽ�1
+        //不带符号比较1
         #50;
         ReadData1 = 1;
         ReadData2 = 2;
@@ -234,7 +214,7 @@
         ALUop = 3'b101;
         ALUSrcA = 0;
         ALUSrcB = 0;
-        //�������űȽ�2
+        //不带符号比较2
         #50;
         ReadData1 = 1;
         ReadData2 = 2;
@@ -243,7 +223,7 @@
         ALUop = 3'b101;
         ALUSrcA = 1;
         ALUSrcB = 0;
-        //�������űȽ�3
+        //不带符号比较3
         #50;
         ReadData1 = 1;
         ReadData2 = 2;
@@ -252,7 +232,7 @@
         ALUop = 3'b101;
         ALUSrcA = 0;
         ALUSrcB = 1;
-        //�������űȽ�4
+        //不带符号比较4
         #50;
         ReadData1 = 1;
         ReadData2 = 2;
@@ -261,7 +241,7 @@
         ALUop = 3'b101;
         ALUSrcA = 1;
         ALUSrcB = 1;
-        //�����űȽ�1
+        //带符号比较1
         #50;
         ReadData1 = 1;
         ReadData2 = 2;
@@ -270,7 +250,7 @@
         ALUop = 3'b110;
         ALUSrcA = 0;
         ALUSrcB = 0;
-        //�����űȽ�2
+        //带符号比较2
         #50;
         ReadData1 = 1;
         ReadData2 = 2;
@@ -279,7 +259,7 @@
         ALUop = 3'b110;
         ALUSrcA = 1;
         ALUSrcB = 0;
-        //�����űȽ�3
+        //带符号比较3
         #50;
         ReadData1 = 1;
         ReadData2 = 2;
@@ -288,7 +268,7 @@
         ALUop = 3'b110;
         ALUSrcA = 0;
         ALUSrcB = 1;
-        //�����űȽ�4
+        //带符号比较4
         #50;
         ReadData1 = 1;
         ReadData2 = 2;
