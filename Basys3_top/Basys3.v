@@ -1,31 +1,31 @@
 `timescale 1ns / 1ps
 
 module basys3(
-    input clk,      //Ê±ÖÓĞÅºÅ
-    input [1:0] SW, //Ñ¡ÔñÊä³öĞÅºÅ
-    input Reset, //ÖØÖÃ°´Å¥
-    input Button, //ÔËĞĞ°´Å¥
-    output [3:0] AN, //ÊıÂë¹ÜÑ¡ÔñĞÅºÅ
-    output [7:0] Out //ÊıÂë¹ÜÊäÈëĞÅºÅ
+    input clk,      //æ—¶é’Ÿä¿¡å·
+    input [1:0] SW, //é€‰æ‹©è¾“å‡ºä¿¡å·
+    input Reset, //é‡ç½®æŒ‰é’®
+    input Button, //è¿è¡ŒæŒ‰é’®
+    output [3:0] AN, //æ•°ç ç®¡é€‰æ‹©ä¿¡å·
+    output [7:0] Out //æ•°ç ç®¡è¾“å…¥ä¿¡å·
     );
     
-    wire [31:0] curPC;     //µ±Ç°µÄPC
-    wire [31:0] DBData;    //DB×ÜÏß
-    wire [31:0] Instruction; //µ±Ç°µØÖ·µÄÖ¸Áî
-    wire [31:0] regRs;     //¼Ä´æÆ÷×érs¼Ä´æÆ÷µÄµØÖ·
-    wire [31:0] regRt;    //¼Ä´æÆ÷×ért¼Ä´æÆ÷µÄµØÖ·
-    wire [5:0] Opcode;    //Ö¸ÁîµÄOPÂë
-    wire [31:0] Out1, Out2; //Out1Îªrs¼Ä´æÆ÷ÖĞµÄÖµ£»Out2Îªrt¼Ä´æÆ÷ÖĞµÄÖµ
-    wire [31:0] Result;   //ALUÔËËãºóµÃµ½µÄ½á¹û
-    wire myCLK;          //Ïû¶¶ºóµÄĞÅºÅ
-    wire clk_sys;        //·ÖÆµºóµÄĞÅºÅ
-    wire [3:0] store;    //¼ÇÂ¼µ±Ç°ÒªÏÔÊ¾Î»µÄÖµ
-    wire [31:0] nextPC;  //ÏÂÒ»ÌõPC
+    wire [31:0] curPC;     //å½“å‰çš„PC
+    wire [31:0] DBData;    //DBæ€»çº¿
+    wire [31:0] Instruction; //å½“å‰åœ°å€çš„æŒ‡ä»¤
+    wire [4:0] regRs;     //å¯„å­˜å™¨ç»„rså¯„å­˜å™¨çš„åœ°å€
+    wire [4:0] regRt;    //å¯„å­˜å™¨ç»„rtå¯„å­˜å™¨çš„åœ°å€
+    wire [5:0] Opcode;    //æŒ‡ä»¤çš„OPç 
+    wire [31:0] Out1, Out2; //Out1ä¸ºrså¯„å­˜å™¨ä¸­çš„å€¼ï¼›Out2ä¸ºrtå¯„å­˜å™¨ä¸­çš„å€¼
+    wire [31:0] Result;   //ALUè¿ç®—åå¾—åˆ°çš„ç»“æœ
+    wire myCLK;          //æ¶ˆæŠ–åçš„ä¿¡å·
+    wire clk_sys;        //åˆ†é¢‘åçš„ä¿¡å·
+    wire [3:0] store;    //è®°å½•å½“å‰è¦æ˜¾ç¤ºä½çš„å€¼
+    wire [31:0] nextPC;  //ä¸‹ä¸€æ¡PC
     
     SingleCycleCPU my_SCPU(myCLK, Reset, regRs, regRt, Opcode, Out1, Out2, curPC, nextPC, Result, DBData, Instruction);  //CPU 
-    CLK_slow cd(clk,Reset,clk_sys);   //·ÖÆµ
-    Keyboard_CLK my_key(clk_sys, Reset, Button, myCLK);  //Ïû¶¶
-    counter my_ct(clk, Reset, AN);    //¼ÆÊı
-    Display_7SegLED led(store, Out);  //ÏÔÊ¾
-    change my_cg(myCLK, Reset, AN, SW, Result, curPC, nextPC, DBData, Out1, Out2, Instruction, store);    //È¡Öµ
+    CLK_slow cd(clk,Reset,clk_sys);   //åˆ†é¢‘
+    Keyboard_CLK my_key(clk_sys, Reset, Button, myCLK);  //æ¶ˆæŠ–
+    counter my_ct(clk, Reset, AN);    //è®¡æ•°
+    Display_7SegLED led(store, Out);  //æ˜¾ç¤º
+    change my_cg(myCLK, Reset, AN, SW, Result, curPC, nextPC, DBData, Out1, Out2, Instruction, store);    //å–å€¼
 endmodule
