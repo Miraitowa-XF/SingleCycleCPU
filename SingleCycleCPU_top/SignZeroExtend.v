@@ -1,13 +1,13 @@
 `timescale 1ns / 1ps
 
 module SignZeroExtend(
-    //¸ù¾İÊı¾İÍ¨Â·¶¨ÒåÊä?ºÍÊä³ö
+    //æ ¹æ®æ•°æ®é€šè·¯å®šä¹‰è¾“å…¥å’Œè¾“å‡º
     input wire [15:0] Immediate,
     input ExtSel,
     output wire [31:0] Out
 );
- //ºó16Î»´æ´¢?¼´Êı
+ //å16ä½å­˜å‚¨ç«‹å³æ•°
     assign Out[15:0] = Immediate[15:0];
- //Ç°16Î»¸ù¾İ?¼´Êı½ø?²¹1»ò²¹0µÄ²Ù×÷
+ //å‰16ä½æ ¹æ®ç«‹å³æ•°è¿›è¡Œè¡¥1æˆ–è¡¥0çš„æ“ä½œ
     assign Out[31:16] = ExtSel == 1 ? {16{Immediate[15]}} : 16'b0;
 endmodule
